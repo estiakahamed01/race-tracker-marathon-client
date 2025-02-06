@@ -1,6 +1,18 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        console.log("successful sign out");
+      })
+      .catch((error) => {
+        console.log("failed to sign out");
+      });
+  };
   const links = (
     <div className="flex items-center">
       <li>
@@ -38,18 +50,31 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">Race<span className="text-green-500">Tracker</span></a>
+        <a className="btn btn-ghost text-xl font-bold">
+          Race<span className="text-green-500">Tracker</span>
+        </a>
       </div>
       <div className="navbar-end lg:flex">
-          <div className="menu hidden lg:flex menu-horizontal px-1 items-center">
-          {links}
+        {user ? (
+          <div className="flex flex-row items-center gap-5">
+            <Link to="/">Home</Link>
+            <Link>Marathons</Link>
+            <Link>Dashboard</Link>
+            <Link>Use Avatar</Link>
+            <Link>
+              <button onClick={handleSignOut} className="btn">Logout</button>
+            </Link>
           </div>
-          <div className="flex flex-row gap-5 items-center">
-          <Link to="register">Register</Link>
-          <Link to="login"><button className="btn">Login</button></Link>
+        ) : (
+          <div className="flex flex-row items-center gap-5">
+            <Link to="/">Home</Link>
+            <Link>Marathons</Link>
+            <Link to="register">Register</Link>
+            <Link to="login">
+              <button className="btn">Login</button>
+            </Link>
           </div>
-        
-      
+        )}
       </div>
     </div>
   );
