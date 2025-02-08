@@ -10,7 +10,7 @@ import lottiebanner2 from "../../assets/lottie/banner02lottie.json";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full">
+    <div className="carousel w-full my-4">
       <div id="slide1" className="carousel-item relative w-full">
         <div className="p-36 bg-green-50 rounded-2xl flex flex-row w-full">
           <div>
@@ -54,9 +54,9 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <div className="max-h-[600px] w-full relative rounded-2xl flex flex-row">
-          <div>
-            <img className="rounded-2xl" src={banner2} alt="" />
+        <div className="max-h-[700px] w-full relative rounded-2xl flex flex-row">
+          <div className="max-h-[700px] w-full">
+            <img className="rounded-2xl h-full w-full" src={banner2} alt="" />
           </div>
           <div className="absolute flex flex-row justify-center items-center mt-56">
             <h2 className="text-4xl text-white font-bold w-2/3">
@@ -83,9 +83,9 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
-        <div className="max-h-[600px] w-full relative rounded-2xl flex flex-col">
-          <div>
-            <img className="rounded-2xl" src={banner3} alt="" />
+        <div className="max-h-[700px] w-full relative rounded-2xl flex flex-col">
+          <div className="max-h-[700px]">
+            <img className="rounded-2xl h-full w-full" src={banner3} alt="" />
           </div>
           <div className="absolute flex flex-col justify-center items-center space-y-7 mt-56">
             <h2 className="text-4xl text-white font-bold w-2/3">
@@ -107,18 +107,18 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
-        <div className="max-h-[600px] w-full relative rounded-2xl flex flex-col">
-          <div>
-            <img className="rounded-2xl opacity-60" src={banner4} alt="" />
+        <div className="max-h-[700px] w-full relative rounded-2xl flex flex-col">
+          <div className="max-h-[700px]">
+            <img className="rounded-2xl h-full w-full opacity-60" src={banner4} alt="" />
           </div>
           <div className="absolute flex flex-col justify-center items-center space-y-7 mt-56">
-            <h2 className="text-4xl text-white font-bold w-2/3 text-black">
+            <h2 className="text-4xl font-bold w-2/3 text-black">
               "Running teaches you that you are capable of so much more than you
               ever thought possible."<span className="text-lg"> <br />
               - <span className="text-red-500">Kara Goucher,</span> American Marathoner.
               </span>
             </h2>
-            <button className="px-7 py-3 bg-green-50 bg-opacity-50 text-xl font-bold rounded-lg">
+            <button className="px-7 py-3 border-[1px] border-green-500 bg-green-50 bg-opacity-50 text-xl font-bold rounded-lg">
               Explore
             </button>
           </div>
