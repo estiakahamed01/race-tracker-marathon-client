@@ -2,10 +2,11 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import lottieSignIn from "../../assets/lottie/SignIn.json";
 import { useContext } from "react";
+import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser,singInWithGoogle } = useContext(AuthContext);
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -20,6 +21,14 @@ const Login = () => {
         console.log(error);
       });
   };
+  const handleGoogleSignIn = () =>{
+    singInWithGoogle()
+    .then(result => {
+      console.log(result.user)
+      // navigate('/')
+    })
+    .catch(error => console.log('ERROR',error.message))
+  }
 
   return (
     <div className="w-10/12 mx-auto">
@@ -72,7 +81,7 @@ const Login = () => {
                       <span className="text-red-600">Register</span>
                     </button>
                   </Link>
-                  {/* <button onClick={handleGoogleSignIn} className="btn btn-primary mb-7 w-full mt-6"><span className="text-2xl"><FcGoogle /></span>Sign In With Google</button> */}
+                  <button onClick={handleGoogleSignIn} className="btn btn-primary mb-7 w-full mt-6"><span className="text-2xl"><FcGoogle /></span>Sign In With Google</button>
                 </div>
               </form>
             </div>
