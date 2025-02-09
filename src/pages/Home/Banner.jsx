@@ -10,7 +10,7 @@ import lottiebanner2 from "../../assets/lottie/banner02lottie.json";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full my-4">
+    <div className="carousel w-full">
       <div id="slide1" className="carousel-item relative w-full">
         <div className="p-36 bg-green-50 rounded-2xl flex flex-row w-full">
           <div>

@@ -3,6 +3,8 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import DetailsPage from "../pages/MarathonDetailsPage/DetailsPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,13 +17,18 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: '/marathons/:id',
+        element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/marathons/${params.id}`)
+      },
+      {
         path: "register",
         element: <Register></Register>,
       },
       {
         path: "login",
         element: <Login></Login>,
-      },
+      }
     ],
   },
 ]);

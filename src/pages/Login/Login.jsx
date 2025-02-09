@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import lottieSignIn from "../../assets/lottie/SignIn.json";
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -8,6 +8,8 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 const Login = () => {
   const { signInUser,singInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state || '/'
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,7 +28,7 @@ const Login = () => {
     singInWithGoogle()
     .then(result => {
       console.log(result.user)
-      navigate('/')
+      navigate(from)
     })
     .catch(error => console.log('ERROR',error.message))
   }
