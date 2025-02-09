@@ -1,9 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsPage = () => {
   const marathon = useLoaderData();
-  const {title,photoURL
+  const {_id,title,photoURL
 ,marathonStart,distance
 ,description} = marathon;
   return (
@@ -21,8 +21,10 @@ const DetailsPage = () => {
           </p>
           <p className="font-semibold">Distance : {distance
           }</p>
-          <p className="font-semibold">Start : {marathonStart}</p>
+          <p className="font-semibold pb-5">Start : {marathonStart}</p>
+          <Link to={`/registerMarathon/${_id}`}>
           <button className="btn btn-primary">Register Now</button>
+          </Link>
         </div>
       </div>
     </div>

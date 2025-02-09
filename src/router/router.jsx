@@ -5,6 +5,8 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import DetailsPage from "../pages/MarathonDetailsPage/DetailsPage";
 import PrivateRoute from "./PrivateRoute";
+import MarathonRegister from "../pages/MarathonRegister/MarathonRegister";
+
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
         path: '/marathons/:id',
         element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/marathons/${params.id}`)
+      },
+      {
+        path:'/registerMarathon/:id',
+        element:<PrivateRoute><MarathonRegister></MarathonRegister></PrivateRoute>,
       },
       {
         path: "register",
