@@ -24,7 +24,7 @@ const Navbar = () => {
     </div>
   );
   return (
-    <div className="navbar bg-base-100 mt-7">
+    <div className="navbar bg-base-100 mt-7n">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,7 +59,7 @@ const Navbar = () => {
           <div className="flex flex-row items-center gap-5">
             <Link to="/">Home</Link>
             <Link>Marathons</Link>
-            <Link>Dashboard</Link>
+            <Link to="/dashboard">Dashboard</Link>
             <Link>Use Avatar</Link>
             <Link>
               <button onClick={handleSignOut} className="btn">Logout</button>

@@ -6,6 +6,11 @@ import Login from "../pages/Login/Login";
 import DetailsPage from "../pages/MarathonDetailsPage/DetailsPage";
 import PrivateRoute from "./PrivateRoute";
 import MarathonRegister from "../pages/MarathonRegister/MarathonRegister";
+import MyApplications from "../pages/MyApplications/MyApplications";
+import DashboardLayout from "../layout/DashboardLayout";
+import MyRegister from "../pages/MyRegister/MyRegister";
+import MyMarathon from "../pages/MyMarathon/MyMarathon";
+import AddMarathon from "../pages/AddMarathon/AddMarathon";
 
 
 const router = createBrowserRouter([
@@ -28,6 +33,10 @@ const router = createBrowserRouter([
         element:<PrivateRoute><MarathonRegister></MarathonRegister></PrivateRoute>,
       },
       {
+        path: '/myApplications',
+        element:<PrivateRoute><MyApplications></MyApplications></PrivateRoute>
+      },
+      {
         path: "register",
         element: <Register></Register>,
       },
@@ -37,6 +46,26 @@ const router = createBrowserRouter([
       }
     ],
   },
+  //DashBoard
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children:[
+      {
+        path:'addMarathon',
+        element:<PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
+      },
+      {
+        path:'myMarathon',
+        element:<PrivateRoute><MyMarathon></MyMarathon></PrivateRoute>
+      },
+      {
+        path:'myRegister',
+        element:<PrivateRoute><MyRegister></MyRegister></PrivateRoute>
+      }
+    ]
+
+  }
 ]);
 
 export default router;

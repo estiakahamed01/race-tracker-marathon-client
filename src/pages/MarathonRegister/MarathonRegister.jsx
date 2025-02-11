@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from 'sweetalert2'
 
 const MarathonRegister = () => {
     const {id} = useParams()
     const {user} = useAuth()
+    const navigate = useNavigate()
     // console.log(id,user)
 
     const handleSubmit = e => {
@@ -42,11 +43,15 @@ const MarathonRegister = () => {
                     icon: "success",
                     draggable: true
                   });
+                  navigate('/dashboard/myRegister')
             }
         })
     }
   return (
     <div className="card bg-base-100 w-10/12 mx-auto shrink-0 shadow-2xl my-8">
+
+        <h2 className="text-5xl font-bold text-center mt-7">Register Now</h2>
+
       <form onSubmit={handleSubmit} className="card-body">
         <div className="flex flex-row gap-4">
           <div className="form-control w-1/2">
@@ -109,7 +114,7 @@ const MarathonRegister = () => {
             className="textarea textarea-bordered textarea-md w-full"
           ></textarea>
         </div>
-        <button className="btn mt-5">Submit</button>
+        <button className="btn mt-5 bg-green-500">Submit</button>
       </form>
     </div>
   );
