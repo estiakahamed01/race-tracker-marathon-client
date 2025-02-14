@@ -1,11 +1,24 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsPage = () => {
   const marathon = useLoaderData();
   const {_id,title,photoURL
 ,marathonStart,distance
-,description} = marathon;
+,description,startDate,
+endDate} = marathon;
+
+const [isRegisterOpen,setIsRegisterOpen] = useState(false)
+useEffect(() => {
+  const currentDate = new Date()
+
+  if(currentDate >= startDate && currentDate <= endDate){
+    setIsRegisterOpen(true)
+  }
+  else{
+    setIsRegisterOpen(false)
+  }
+},[])
   return (
     <div className="hero bg-base-200 py-10">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -22,9 +35,9 @@ const DetailsPage = () => {
           <p className="font-semibold">Distance : {distance
           }</p>
           <p className="font-semibold pb-5">Start : {marathonStart}</p>
-          <Link to={`/registerMarathon/${_id}`}>
+          {isRegisterOpen ? <Link to={`/registerMarathon/${_id}`}>
           <button className="btn btn-primary">Register Now</button>
-          </Link>
+          </Link> : <button className="btn bg-green-500">Register Close</button> }
         </div>
       </div>
     </div>
