@@ -1,9 +1,13 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import useAuth from "../../hooks/useAuth";
+
 
 const AddMarathon = () => {
+  const {user} = useAuth()
   const [selectedStart, setSelectedStart] = useState(null);
 
   const handleDateChange = (date) =>{
@@ -20,11 +24,14 @@ const AddMarathon = () => {
     setMarathonStartDate(date)
   }
 
+  const navigate = useNavigate()
+
   const handleAddMarathon = e =>{
     e.preventDefault()
     const formData = new FormData(e.target)
     const initialData = Object.fromEntries(formData.entries())
-    initialData.createdAt = new Date()
+    initialData.createdAt = new Date();
+    initialData.creatorEmail  = user.email
     console.log(initialData)
 
   fetch('http://localhost:5000/marathons',{
@@ -44,7 +51,7 @@ const AddMarathon = () => {
             showConfirmButton: false,
             timer: 1500
         });
-        navigate('/myApplications')
+        navigate('/dashboard/myMarathon')
     }
 })
   }

@@ -3,7 +3,7 @@ import { BsCalendar2DateFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const LatestMarathonCard = ({marathon}) => {
-    const {_id,title,location,endDate,photoURL} = marathon;
+    const {_id,title,location,endDate,photoURL,registerCount} = marathon;
     return (
         <div className="card bg-base-100 w-96 shadow-xl">
   <figure>

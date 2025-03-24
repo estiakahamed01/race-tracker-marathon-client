@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import moment from 'moment';
 
 const DetailsPage = () => {
   const marathon = useLoaderData();
   const {_id,title,photoURL
 ,marathonStart,distance
 ,description,startDate,
-endDate} = marathon;
+endDate,
+registerCount} = marathon;
 
 const [isRegisterOpen,setIsRegisterOpen] = useState(false)
 useEffect(() => {
-  const currentDate = new Date()
+  const date = new Date()
+  const currentDate = moment(date).format('MM/DD/YYYY');
 
   if(currentDate >= startDate && currentDate <= endDate){
     setIsRegisterOpen(true)
@@ -34,10 +37,11 @@ useEffect(() => {
           </p>
           <p className="font-semibold">Distance : {distance
           }</p>
+          <p className="font-semibold">Registered : {registerCount ? registerCount : "0"}</p>
           <p className="font-semibold pb-5">Start : {marathonStart}</p>
-          {isRegisterOpen ? <Link to={`/registerMarathon/${_id}`}>
-          <button className="btn btn-primary">Register Now</button>
-          </Link> : <button className="btn bg-green-500">Register Close</button> }
+          <Link to={`/registerMarathon/${_id}`}>
+          <button disabled={!isRegisterOpen} className="btn btn-primary">{isRegisterOpen ? 'Register Now' : 'Register Close'}</button>
+          </Link>
         </div>
       </div>
     </div>
