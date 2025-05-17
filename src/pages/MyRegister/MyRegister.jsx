@@ -4,6 +4,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { MdUpdate } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import {Helmet} from "react-helmet";
 
 const MyRegister = () => {
   const { user } = useAuth();
@@ -12,17 +13,6 @@ const MyRegister = () => {
   const axiosSecure = useAxiosSecure()
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/marathon-register?email=${user.email}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setMarathons(data);
-    //   });
-
-    // axios.get(`http://localhost:5000/marathon-register?email=${user.email}`,{
-    //         withCredentials:true
-            
-    //     })
-    //     .then(res => setMarathons(res.data))
 
     axiosSecure.get(`/marathon-register?email=${user.email}`)
     .then(res => setMarathons(res.data))
@@ -30,6 +20,9 @@ const MyRegister = () => {
   }, [user.email]);
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+        <title>Dashboard ⮞ My Apply</title>
+      </Helmet>
         <table className="table">
           {/* head */}
           <thead>

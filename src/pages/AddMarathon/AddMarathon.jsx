@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import useAuth from "../../hooks/useAuth";
+import {Helmet} from "react-helmet";
 
 
 const AddMarathon = () => {
@@ -57,6 +58,9 @@ const AddMarathon = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>Dashboard ⮞ Add Marathon</title>
+      </Helmet>
       <h2 className="text-center text-3xl font-bold">Add Marathon Campaign</h2>
       <form onSubmit={handleAddMarathon} className="card-body space-y-4">
         <div className="flex flex-row gap-4">

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import MarathonCard from "./MarathonCard";
 import { useLoaderData } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 const Marathons = () => {
 const loadedMarathons = useLoaderData()
   const [marathons,setMarathons] = useState(loadedMarathons)
   return (
     <div className="pb-10">
+      <Helmet>
+        <title>Marathons || Race Tracker</title>
+      </Helmet>
       <h1 className="text-5xl text-center pt-10 font-bold pb-6">
         Our <span className="text-green-500">Marathon</span> Events
       </h1>

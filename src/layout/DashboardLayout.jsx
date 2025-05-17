@@ -1,10 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Footer from "../pages/shared/Footer";
 import Navbar from "../pages/shared/Navbar";
+import {Helmet} from "react-helmet";
 
 const DashboardLayout = () => {
   return (
     <div className="w-10/12 mx-auto">
+      <Helmet>
+        <title>Dashboard || Race Tracker</title>
+      </Helmet>
       <div className="">
         <Navbar></Navbar>
       </div>

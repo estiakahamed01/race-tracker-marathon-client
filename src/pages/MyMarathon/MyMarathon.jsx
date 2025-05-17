@@ -4,6 +4,7 @@ import { MdUpdate } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import {Helmet} from "react-helmet";
 
 const MyMarathon = () => {
   const [marathons, setMarathons] = useState([]);
@@ -49,6 +50,9 @@ const MyMarathon = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Dashboard ⮞ My Marathon</title>
+      </Helmet>
       <h2 className="text-2xl text-center font-bold mb-10">
         My Marathon : {marathons.length}
       </h2>
