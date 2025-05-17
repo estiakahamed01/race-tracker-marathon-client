@@ -3,17 +3,30 @@ import useAuth from "../../hooks/useAuth";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdUpdate } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyRegister = () => {
   const { user } = useAuth();
   const [marathons, setMarathons] = useState([]);
 
+  const axiosSecure = useAxiosSecure()
+
   useEffect(() => {
-    fetch(`http://localhost:5000/marathon-register?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMarathons(data);
-      });
+    // fetch(`http://localhost:5000/marathon-register?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setMarathons(data);
+    //   });
+
+    // axios.get(`http://localhost:5000/marathon-register?email=${user.email}`,{
+    //         withCredentials:true
+            
+    //     })
+    //     .then(res => setMarathons(res.data))
+
+    axiosSecure.get(`/marathon-register?email=${user.email}`)
+    .then(res => setMarathons(res.data))
+
   }, [user.email]);
   return (
     <div className="w-11/12 mx-auto">
@@ -65,6 +78,7 @@ const MyRegister = () => {
                       </span>
                     </td>
                     <td><button className="btn w-full"><MdUpdate /></button></td>
+                    
                     <th>
                       <button className="btn w-full"><RxCross2 /></button>
                     </th>

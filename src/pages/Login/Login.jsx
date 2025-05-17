@@ -1,15 +1,16 @@
 import Lottie from "lottie-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {  Link, useLocation, useNavigate } from "react-router-dom";
 import lottieSignIn from "../../assets/lottie/SignIn.json";
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import axios from "axios";
 
 const Login = () => {
-  const { signInUser,singInWithGoogle } = useContext(AuthContext);
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state || '/'
+  const { signInUser, singInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || "/";
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,20 +19,28 @@ const Login = () => {
     console.log(email, password);
     signInUser(email, password)
       .then((result) => {
-        console.log("sign in", result.user);
+        console.log("sign in", result.user.email);
+        const user = { email: email };
+        axios.post('http://localhost:5000/jwt', user)
+          .then(data => {
+            console.log(data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const handleGoogleSignIn = () =>{
+  const handleGoogleSignIn = () => {
     singInWithGoogle()
-    .then(result => {
-      console.log(result.user)
-      navigate(from)
-    })
-    .catch(error => console.log('ERROR',error.message))
-  }
+      .then((result) => {
+        console.log(result.user);
+        navigate(from);
+      })
+      .catch((error) => console.log("ERROR", error.message));
+  };
 
   return (
     <div className="w-10/12 mx-auto">
@@ -84,7 +93,15 @@ const Login = () => {
                       <span className="text-red-600">Register</span>
                     </button>
                   </Link>
-                  <button onClick={handleGoogleSignIn} className="btn btn-primary mb-7 w-full mt-6"><span className="text-2xl"><FcGoogle /></span>Sign In With Google</button>
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn btn-primary mb-7 w-full mt-6"
+                  >
+                    <span className="text-2xl">
+                      <FcGoogle />
+                    </span>
+                    Sign In With Google
+                  </button>
                 </div>
               </form>
             </div>

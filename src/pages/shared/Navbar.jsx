@@ -50,7 +50,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">
+        <a className="btn btn-ghost text-2xl font-bold">
           Race<span className="text-green-500">Tracker</span>
         </a>
       </div>
@@ -58,9 +58,9 @@ const Navbar = () => {
         {user ? (
           <div className="flex flex-row items-center gap-5">
             <Link to="/">Home</Link>
-            <Link>Marathons</Link>
+            <Link to="/marathons">Marathons</Link>
             <Link to="/dashboard">Dashboard</Link>
-            <Link>Use Avatar</Link>
+            <Link to="/avatar">Use Avatar</Link>
             <Link>
               <button onClick={handleSignOut} className="btn">Logout</button>
             </Link>

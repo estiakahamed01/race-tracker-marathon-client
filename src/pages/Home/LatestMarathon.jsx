@@ -13,6 +13,7 @@ const LatestMarathon = () => {
     },[])
     return (
         <div className="my-10">
+            <h1 className=" text-5xl font-bold text-center py-6 pb-10">Our <span className="text-green-500">Latest</span> Marathons</h1>
             <div className="grid grid-cols-3 gap-5 w-9/12 mx-auto">
                 {
                     marathons.map(marathon => <LatestMarathonCard marathon={marathon} key={marathon._id}></LatestMarathonCard>)

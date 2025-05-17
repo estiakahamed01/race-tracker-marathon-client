@@ -11,6 +11,9 @@ import DashboardLayout from "../layout/DashboardLayout";
 import MyRegister from "../pages/MyRegister/MyRegister";
 import MyMarathon from "../pages/MyMarathon/MyMarathon";
 import AddMarathon from "../pages/AddMarathon/AddMarathon";
+import UpdateMarathon from "../pages/UpdateMarathon/UpdateMarathon";
+import Marathons from "../pages/Marathons/Marathons";
+import Avatar from "../pages/Avatar/Avatar";
 
 
 const router = createBrowserRouter([
@@ -43,6 +46,21 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path:"marathons",
+        element: <PrivateRoute><Marathons></Marathons></PrivateRoute>,
+        loader: () => fetch("http://localhost:5000/marathons")
+
+      },
+      {
+        path:'marathons/updateMarathon/:_id',
+        element:<PrivateRoute><UpdateMarathon></UpdateMarathon></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/marathons/${params._id}`)
+      },
+      {
+        path:'avatar',
+        element:<PrivateRoute><Avatar></Avatar></PrivateRoute>
       }
     ],
   },
@@ -62,7 +80,16 @@ const router = createBrowserRouter([
       {
         path:'myRegister',
         element:<PrivateRoute><MyRegister></MyRegister></PrivateRoute>
+      },
+      {
+        path:'myMarathon/updateMarathon/:_id',
+        element:<PrivateRoute><UpdateMarathon></UpdateMarathon></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/marathons/${params._id}`)
       }
+      // {
+      //   path:'updateMarathon',
+      //   element:<PrivateRoute><UpdateMarathon></UpdateMarathon></PrivateRoute>
+      // }
     ]
 
   }
