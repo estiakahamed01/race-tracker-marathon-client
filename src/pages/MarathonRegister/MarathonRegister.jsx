@@ -28,7 +28,7 @@ const MarathonRegister = () => {
             age,
             additionalInfo
         }
-        fetch('http://localhost:5000/marathon-registers',{
+        fetch('https://race-track-server.vercel.app/marathon-registers',{
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'

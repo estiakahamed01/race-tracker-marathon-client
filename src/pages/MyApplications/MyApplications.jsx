@@ -6,13 +6,13 @@ const MyApplications = () => {
     const {user} = useAuth();
     const [marathons, setMarathons] = useState([])
     useEffect(() =>{
-        // fetch(`http://localhost:5000/marathon-register?email=${user.email}`)
+        // fetch(`https://race-track-server.vercel.app/marathon-register?email=${user.email}`)
         // .then(res => res.json())
         // .then(data =>{
         //     setMarathons(data)
         // })
 
-        axios.get(`http://localhost:5000/marathon-register?email=${user.email}`,{
+        axios.get(`https://race-track-server.vercel.app/marathon-register?email=${user.email}`,{
             withCredentials:true
             
         })

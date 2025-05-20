@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: '/marathons/:id',
         element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/marathons/${params.id}`)
+        loader: ({params}) => fetch(`https://race-track-server.vercel.app/marathons/${params.id}`)
       },
       {
         path:'/registerMarathon/:id',
@@ -50,13 +50,13 @@ const router = createBrowserRouter([
       {
         path:"marathons",
         element: <PrivateRoute><Marathons></Marathons></PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/marathons")
+        loader: () => fetch("https://race-track-server.vercel.app/marathons")
 
       },
       {
         path:'marathons/updateMarathon/:_id',
         element:<PrivateRoute><UpdateMarathon></UpdateMarathon></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/marathons/${params._id}`)
+        loader: ({params}) => fetch(`https://race-track-server.vercel.app/marathons/${params._id}`)
       },
       {
         path:'avatar',
@@ -84,7 +84,7 @@ const router = createBrowserRouter([
       {
         path:'myMarathon/updateMarathon/:_id',
         element:<PrivateRoute><UpdateMarathon></UpdateMarathon></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/marathons/${params._id}`)
+        loader: ({params}) => fetch(`https://race-track-server.vercel.app/marathons/${params._id}`)
       }
       // {
       //   path:'updateMarathon',

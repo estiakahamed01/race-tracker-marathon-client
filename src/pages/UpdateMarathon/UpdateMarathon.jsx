@@ -38,7 +38,7 @@ endDate,location} = marathon;
     const updatedData = Object.fromEntries(formData.entries())
 
 
-    fetch(`http://localhost:5000/marathons/${_id}`,{
+    fetch(`https://race-track-server.vercel.app/marathons/${_id}`,{
       method: 'PUT',
       headers: {
         'content-type' :'application/json'

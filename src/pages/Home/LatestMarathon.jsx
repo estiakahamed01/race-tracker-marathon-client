@@ -5,7 +5,7 @@ import LatestMarathonCard from "./LatestMarathonCard";
 const LatestMarathon = () => {
     const [marathons,setMarathons] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/marathons')
+        fetch('https://race-track-server.vercel.app/marathons')
         .then(res => res.json())
             .then(data => {
                 setMarathons(data);

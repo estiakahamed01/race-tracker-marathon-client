@@ -35,7 +35,7 @@ const AddMarathon = () => {
     initialData.creatorEmail  = user.email
     console.log(initialData)
 
-  fetch('http://localhost:5000/marathons',{
+  fetch('https://race-track-server.vercel.app/marathons',{
     method: 'POST',
     headers: {
       'content-type' :'application/json'

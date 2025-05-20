@@ -21,7 +21,7 @@ const Login = () => {
       .then((result) => {
         console.log("sign in", result.user.email);
         const user = { email: email };
-        axios.post('http://localhost:5000/jwt', user)
+        axios.post('https://race-track-server.vercel.app/jwt', user)
           .then(data => {
             console.log(data);
           })
